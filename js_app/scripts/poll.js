@@ -1,8 +1,19 @@
-var Poll = (function(_) {
-    var poll = {
+window.rll = window.rll || {};
+window.rll.Pages = window.rll.Pages || {};
+
+(function(
+    $,
+    _) {
+    'use strict';
+
+    var self;
+
+    var Poll = {
 
         // Instantiates the poll
         init: function($el) {
+            self = this;
+
             self.featureMap = {
                 1: "Free Shipping",
                 2: "Reliable User Comments",
@@ -90,4 +101,6 @@ var Poll = (function(_) {
         }
 
     };
-});
+})(
+    jQuery,
+    window._);
