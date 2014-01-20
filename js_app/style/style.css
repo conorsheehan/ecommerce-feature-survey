@@ -1,7 +1,19 @@
 html, body {
-    background: #00B4FF;
+    background: white;
     font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #00B4FF;
+    color: #fff;
+    letter-spacing: 1;
+    padding: 1em 0;
+    border-bottom: 5px solid #00a1e4;
+}
+header h1 {
+    margin: 0;
 }
 .main {
     width: 90%;
@@ -13,9 +25,9 @@ h1 {
     text-align: center;
 }
 p {
-    font-size: 1.2em;
+    font-size: 1.4em;
     text-align: center;
-    line-height: 1.5em;
+    line-height: 1.4em;
 }
 ul {
     display: block;
@@ -25,7 +37,8 @@ ul {
     margin: 2em 0;
 }
 .rankings .label {
-    opacity: 0.6;
+    color: #bbb;
+    letter-spacing: 1;
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
@@ -40,16 +53,14 @@ ul {
     display: block;
     font-size: 1.2em;
     padding: 10px 15px;
-    margin-bottom: -1px;
-    /*background-color: #fff;*/
-    border: 1px solid rgba(255,255,255,0.3);
+    background: #66d2ff;
+    border: 1px solid #94e0ff;
     border-top: 0;
-    background-color: rgba(255,255,255,0.2);
     cursor: pointer;
     color: #333;
 }
 .features li:first-child {
-    border-top: 1px solid rgba(255,255,255,0.3);
+    border-top: 1px solid #94e0ff;
 }
 .features li i {
     padding-right: 1em;
@@ -70,11 +81,6 @@ ul {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
 }
 .btn {
     display: block;
