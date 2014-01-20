@@ -55,7 +55,8 @@ ul {
     padding: 10px 15px;
     background: #66d2ff;
     border: 1px solid #94e0ff;
-    border-top: 0;
+    /*border-top: 0;*/
+    margin-bottom: -1px;
     cursor: pointer;
     color: #333;
 }
