@@ -1,0 +1,94 @@
+html, body {
+    background: #00B4FF;
+    font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+}
+.main {
+    width: 90%;
+    margin: auto;
+}
+h1 {
+    font-size: 2em;
+    font-weight: normal;
+    text-align: center;
+}
+p {
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 1.5em;
+}
+ul {
+    display: block;
+    list-style: none;
+}
+.rankings {
+    margin: 2em 0;
+}
+.rankings .label {
+    opacity: 0.6;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+.features {
+    max-width: 500px;
+    margin: 0.5em auto;
+    padding: 0;
+}
+.features li {
+    position: relative;
+    display: block;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    /*background-color: #fff;*/
+    border: 1px solid rgba(255,255,255,0.3);
+    border-top: 0;
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+    color: #333;
+}
+.features li:first-child {
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+.features li i {
+    padding-right: 1em;
+    color: white;
+    opacity: 0.6;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.btn {
+    display: block;
+    margin: auto;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-green {
+    background-color: #A0C55F;
+    color: white;
+}
+.btn-green:hover {
+    background-color: #7AB317;
+}

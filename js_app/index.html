@@ -1,17 +1,26 @@
 <html>
 <head>
     <title>E-Commerce Priorities Poll</title>
+    <script src="scripts/vendor/jquery-1.9.1.js"></script>
     <script data-main="scripts/main" src="scripts/require.js"></script>
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
+    <link rel="stylesheet" href="style/font-awesome-4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <header></header>
     <div class="main">
         <h1>E-Commerce Priorities Poll</h1>
-        <p>What do you look for when you're shopping on the web? Please rank the features below, starting with your most important.</p>
+        <p>What do you look for when you're shopping on the web?<br>Please rank the features below, starting with your most important.</p>
 
-        <div>Most Important</div>
-        <ul id="features"></ul>
-        </div>Least Important</div>
+        <div class="rankings">
+            <div class="label">Most Important</div>
+            <ul class="features"></ul>
+            <div class="label">Least Important</div>
+        </div>
+        <form>
+            <input class="btn btn-green" type="submit">
+        </form>
     </div>
     <footer></footer>
 </body>
