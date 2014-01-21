@@ -16,6 +16,7 @@ window.pollApp = window.pollApp || {};
         init: function($el) {
             self = this;
 
+            // Map of feature ID to feature name
             self.featureMap = {
                 1: "Free Shipping",
                 2: "Reliable User Comments",
@@ -36,10 +37,23 @@ window.pollApp = window.pollApp || {};
             self.setupListeners();
         },
 
+        // Return feature ID from its <li>
+        getFeatureIdFromLi: function(featureLi) {
+            var featureId = $(featureLi).data("feature");
+            return self.featureMap[featureId] ? featureId : false;
+        },
+
+        // Return feature name from its <li>
+        getFeatureNameFromLi: function(featureLi) {
+            var featureId = $(featureLi).data("feature");
+            return self.featureMap[featureId];
+        },
+
         // Return sorted array of features, based on current arrangement
+        // Array is made up of feature IDs
         getSortedFeatureList: function() {
             var $featureListElements = self.$featureListEl.find('li');
-            return _.map($featureListElements, self.getFeatureFromLi);
+            return _.map($featureListElements, self.getFeatureIdFromLi);
         },
 
         // Return mapping of sorted features, based on current arrangement
@@ -55,15 +69,9 @@ window.pollApp = window.pollApp || {};
             return _.object(keys, sortedFeatureList);
         },
 
-        // Return feature name from its <li>
-        getFeatureFromLi: function(featureLi) {
-            var featureId = $(featureLi).data("feature");
-            return self.featureMap[featureId];
-        },
-
         formSubmit: function() {
             var url = "http://py.conorzsheehan.com/survey/survey-responses/",
-                sortedFeatureMap = self.getSortedFeatureMap();
+                sortedFeatureMap = self.getSortedFeatureMap(true);
             console.log(sortedFeatureMap);
 
             $.post(url, sortedFeatureMap)
