@@ -8,6 +8,11 @@ class Feature(models.Model):
 
 
 class SurveyResponse(models.Model):
+    """
+    Sample POST:
+    {"ip_address": "127.0.0.1", "completion_time": "00:03:01", "device_type": "Computer", "feature_1": 1,"feature_2": 1,"feature_3": 1,"feature_4": 1,"feature_5": 1,"feature_6": 1,"feature_7": 1,"feature_8": 1}
+    """
+
     DEVICE_CHOICES = (
         ('Computer', 'Computer'),
         ('Tablet', 'Tablet'),

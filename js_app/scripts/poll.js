@@ -49,7 +49,7 @@ window.pollApp = window.pollApp || {};
                 keys = _.range(1, sortedFeatureList.length + 1);
             if(ajaxData) {
                 keys = _.map(keys, function(key) {
-                    return "feature-" + key;
+                    return "feature_" + key;
                 });
             }
             return _.object(keys, sortedFeatureList);
@@ -62,7 +62,7 @@ window.pollApp = window.pollApp || {};
         },
 
         formSubmit: function() {
-            var url = "http://py.czsheez.com/ecomm-poll/create/",
+            var url = "http://py.conorzsheehan.com/survey/survey-responses/",
                 sortedFeatureMap = self.getSortedFeatureMap();
             console.log(sortedFeatureMap);
 
