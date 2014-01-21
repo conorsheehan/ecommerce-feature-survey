@@ -10,6 +10,44 @@ window.pollApp = window.pollApp || {};
 
     var self;
 
+    pollApp.Timer = {
+
+        init: function() {
+            this.timer = 0;
+            this.timerIsOn = false;
+            this.cycleTime = 100;
+            this.startTime();
+        },
+
+        timedCount: function() {
+            var self = this;
+            this.timer = setTimeout(function(){
+                self.timedCount();
+            }, this.cycleTime);
+        },
+
+        startTime: function() {
+            if (!this.timerIsOn) {
+                this.timerIsOn=1;
+                this.timedCount();
+            }
+        },
+
+        stopTime: function() {
+            clearTimeout(t);
+            this.timerIsOn=0;
+        },
+
+        readTime: function() {
+            var totalSec = parseInt(this.timer / (1000 / this.cycleTime), 10),
+                hours = parseInt(totalSec / 3600, 10) % 24,
+                minutes = parseInt(totalSec / 60, 10) % 60,
+                seconds = totalSec % 60;
+
+            return (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
+        }
+    };
+
     pollApp.Poll = {
 
         // Instantiates the poll
@@ -35,6 +73,16 @@ window.pollApp = window.pollApp || {};
             self.makeSortable(self.$featureListEl);
 
             self.setupListeners();
+
+            pollApp.Timer.init();
+        },
+
+        getClientIP: function() {
+            return "127.0.0.1";
+        },
+
+        getDeviceType: function() {
+            return "Computer";
         },
 
         // Return feature ID from its <li>
@@ -69,12 +117,28 @@ window.pollApp = window.pollApp || {};
             return _.object(keys, sortedFeatureList);
         },
 
+        // Returns data for the form submission
+        formData: function() {
+            var sortedFeatureMap = self.getSortedFeatureMap(true),
+                seconds = pollApp.Timer.readTime(),
+                device = self.getDeviceType(),
+                ip = self.getClientIP(),
+                data = {};
+
+            data = {
+                ip_address: ip,
+                device_type: device,
+                completion_time: seconds
+            };
+            return _.extend(data, sortedFeatureMap);
+        },
+
         formSubmit: function() {
             var url = "http://py.conorzsheehan.com/survey/survey-responses/",
-                sortedFeatureMap = self.getSortedFeatureMap(true);
-            console.log(sortedFeatureMap);
+                data = self.formData();
+            console.log(data);
 
-            $.post(url, sortedFeatureMap)
+            $.post(url, data)
                 .done(self.formSuccess)
                 .fail(self.formFail)
                 .always(self.formAlways);
