@@ -81,8 +81,16 @@ window.pollApp = window.pollApp || {};
             return "127.0.0.1";
         },
 
+        // Returns device type, based on browser width
         getDeviceType: function() {
-            return "Computer";
+            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+            if (width < 768) {
+                return "Phone";
+            } else if (width < 992) {
+                return "Tablet";
+            } else {
+                return "Computer";
+            }
         },
 
         // Return feature ID from its <li>
