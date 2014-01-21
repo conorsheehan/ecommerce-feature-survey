@@ -30,6 +30,6 @@ class SurveyResponse(models.Model):
     feature_5 = models.SmallIntegerField(choices=FEATURE_RANK_CHOICES, help_text="Coupon Codes")
     feature_6 = models.SmallIntegerField(choices=FEATURE_RANK_CHOICES, help_text="Customer Support")
     feature_7 = models.SmallIntegerField(choices=FEATURE_RANK_CHOICES, help_text="Social Discounts / Referral Programs")
-    feature_8 = models.SmallIntegerField(choices=FEATURE_RANK_CHOICES, help_text="Retail Locations")
+    # feature_8 = models.SmallIntegerField(choices=FEATURE_RANK_CHOICES, help_text="Retail Locations")
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now=True, auto_now_add=True)

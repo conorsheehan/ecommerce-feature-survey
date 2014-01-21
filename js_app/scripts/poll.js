@@ -57,13 +57,13 @@ window.pollApp = window.pollApp || {};
             // Map of feature ID to feature name
             self.featureMap = {
                 1: "Free Shipping",
-                2: "Reliable User Comments",
+                2: "User Comments / Reviews",
                 3: "Free Returns",
-                4: "Guest Checkout",
+                4: "Checkout As Guest",
                 5: "Coupon Codes",
                 6: "Customer Support",
                 7: "Social Discounts / Referral Programs",
-                8: "Retail Locations"
+                // 8: "Retail Locations"
             };
             self.features = _.shuffle(_.keys(self.featureMap)); // Shuffled array of feature keys
 

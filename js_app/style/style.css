@@ -6,11 +6,11 @@ html, body {
     padding: 0;
 }
 header {
-    background: #00B4FF;
+    background: #4b76e8;
     color: #fff;
     letter-spacing: 1;
     padding: 1em 0;
-    border-bottom: 5px solid #00a1e4;
+    border-bottom: 5px solid #4064c5;
 }
 header h1 {
     margin: 0;
@@ -28,6 +28,10 @@ p {
     font-size: 1.4em;
     text-align: center;
     line-height: 1.4em;
+    margin-bottom: 0;
+}
+p + p {
+    margin-top: 0.5em;
 }
 ul {
     display: block;
