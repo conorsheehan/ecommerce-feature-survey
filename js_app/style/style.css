@@ -53,20 +53,22 @@ ul {
     display: block;
     font-size: 1.2em;
     padding: 10px 15px;
-    background: #66d2ff;
-    border: 1px solid #94e0ff;
+    background: #f0f7fa;
+    border: 1px solid #dce3e5;
     /*border-top: 0;*/
     margin-bottom: -1px;
     cursor: pointer;
     color: #333;
 }
 .features li:first-child {
-    border-top: 1px solid #94e0ff;
+    border-top: 1px solid #dce3e5;
 }
 .features li i {
-    padding-right: 1em;
-    color: white;
-    opacity: 0.6;
+    padding-right: 0.7em;
+    color: #cfdfe5;
+}
+.features li:hover i {
+    color: #bfd6e0;
 }
 .btn {
     display: inline-block;
