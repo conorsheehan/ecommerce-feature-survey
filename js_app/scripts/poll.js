@@ -74,11 +74,12 @@ window.pollApp = window.pollApp || {};
 
             self.setupListeners();
 
+            self.setClientIP();
             pollApp.Timer.init();
         },
 
         getClientIP: function() {
-            return "127.0.0.1";
+            return self.clientIP;
         },
 
         // Returns device type, based on browser width
@@ -125,6 +126,20 @@ window.pollApp = window.pollApp || {};
             return _.object(keys, sortedFeatureList);
         },
 
+        findMessageWrapper: function() {
+            if(!self.$findMessageWrapper) {
+                self.$findMessageWrapper = this.$el.find('.messages');
+            }
+            return self.$findMessageWrapper;
+        },
+
+        findSubmitForm: function() {
+            if(!self.$submitForm) {
+                self.$submitForm = this.$el.find('form');
+            }
+            return self.$submitForm;
+        },
+
         // Returns data for the form submission
         formData: function() {
             var sortedFeatureMap = self.getSortedFeatureMap(true),
@@ -154,10 +169,14 @@ window.pollApp = window.pollApp || {};
 
         formSuccess: function() {
             console.log('Success');
+            self.findSubmitForm().hide();
+            self.showMessage("success");
         },
 
         formFail: function() {
             console.log('Fail');
+            self.findSubmitForm().hide();
+            self.showMessage("fail");
         },
 
         formAlways: function() {
@@ -185,11 +204,30 @@ window.pollApp = window.pollApp || {};
             return $(html);
         },
 
+        // Sets client IP via asynchronous call to JSON IP
+        setClientIP: function() {
+            self.clientIP = null;
+            $.get("http://jsonip.com/", function(resp) {
+                self.clientIP = resp.ip;
+            });
+        },
+
         setupListeners: function() {
             self.$el.find('form').submit(function(e) {
                 e.preventDefault();
                 self.formSubmit();
             });
+        },
+
+        showMessage: function(messageClass) {
+            var $messageWrapper = self.findMessageWrapper(),
+                $messageEl = $messageWrapper.find("." + messageClass);
+            $messageWrapper
+                .children()
+                .hide()
+                .end()
+                .show();
+            $messageEl.show();
         }
 
     };

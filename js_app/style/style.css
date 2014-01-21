@@ -99,3 +99,19 @@ ul {
 .btn-green:hover {
     background-color: #7AB317;
 }
+.messages {
+    display: none;
+}
+.messages div {
+    margin: 1em 0;
+    letter-spacing: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+.messages .success {
+    color: green;
+}
+.messages .fail {
+    color: red;
+}
