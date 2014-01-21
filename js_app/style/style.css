@@ -115,9 +115,29 @@ ul {
     font-weight: bold;
     text-align: center;
 }
+.messages div p {
+    font-size: 1em;
+}
 .messages .success {
-    color: green;
+    color: #333;
 }
 .messages .fail {
     color: red;
+}
+.messages .success a {
+    margin-top: 0.25em;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 12px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-transform: none;
+
+    background-color: #A0C55F;
+    color: white;
 }

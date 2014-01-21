@@ -63,9 +63,10 @@ window.pollApp = window.pollApp || {};
                 5: "Coupon Codes",
                 6: "Customer Support",
                 7: "Social Discounts / Referral Programs",
-                // 8: "Retail Locations"
             };
+            console.log('keys 1');
             self.features = _.shuffle(_.keys(self.featureMap)); // Shuffled array of feature keys
+            console.log('keys 2');
 
             self.$el = $el;
             self.$featureListEl = self.$el.find('ul.features');
