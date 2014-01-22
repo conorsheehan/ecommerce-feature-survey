@@ -1,14 +1,17 @@
-// window.rll = window.rll || {};
-// window.rll.Pages = window.rll.Pages || {};
-window.pollApp = window.pollApp || {};
-
-(function(
-    pollApp,
+define([
+    "jquery",
+    "jqueryui",
+    "jqueryui_punch",
+    "underscore",
+], function(
     $,
-    _) {
-    'use strict';
+    jqueryui,
+    jqueryui_punch,
+    _
+) {
 
-    var self;
+    var pollApp = {},
+        self;
 
     pollApp.Timer = {
 
@@ -65,6 +68,7 @@ window.pollApp = window.pollApp || {};
                 7: "Social Discounts / Referral Programs",
             };
             console.log('keys 1');
+            console.log('underscore', _);
             self.features = _.shuffle(_.keys(self.featureMap)); // Shuffled array of feature keys
             console.log('keys 2');
 
@@ -243,7 +247,6 @@ window.pollApp = window.pollApp || {};
         }
 
     };
-})(
-    window.pollApp,
-    window.$,
-    window._);
+
+    return pollApp;
+});
