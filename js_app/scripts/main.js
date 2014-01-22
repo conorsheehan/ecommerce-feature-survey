@@ -33,16 +33,13 @@ requirejs.config({
 require([
     "require",
     "jquery",
-    // "jqueryui",
-    // "jqueryui_punch",
     "poll"
 ], function(
     req,
     $,
-    // jqueryui,
-    // jqueryui_punch,
     pollApp
 ) {
-    pollApp.Poll.init($('div.main'));
+    // Initialize poll app
+    pollApp.init($('div.main'));
 
 });

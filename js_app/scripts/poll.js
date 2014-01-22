@@ -9,49 +9,49 @@ define([
     jqueryui_punch,
     _
 ) {
+    var timer = function() {
+        var self;
+        return {
 
-    var pollApp = {},
-        self;
+            init: function() {
+                self = this;
+                self.timer = 0;
+                self.timerIsOn = false;
+                self.cycleTime = 100;
+                self.startTime();
+                return self;
+            },
 
-    pollApp.Timer = {
+            timedCount: function() {
+                self.timer = setTimeout(function(){
+                    self.timedCount();
+                }, self.cycleTime);
+            },
 
-        init: function() {
-            this.timer = 0;
-            this.timerIsOn = false;
-            this.cycleTime = 100;
-            this.startTime();
-        },
+            startTime: function() {
+                if (!self.timerIsOn) {
+                    self.timerIsOn=1;
+                    self.timedCount();
+                }
+            },
 
-        timedCount: function() {
-            var self = this;
-            this.timer = setTimeout(function(){
-                self.timedCount();
-            }, this.cycleTime);
-        },
+            stopTime: function() {
+                clearTimeout(t);
+                self.timerIsOn=0;
+            },
 
-        startTime: function() {
-            if (!this.timerIsOn) {
-                this.timerIsOn=1;
-                this.timedCount();
+            readTime: function() {
+                var totalSec = parseInt(self.timer / (1000 / self.cycleTime), 10),
+                    hours = parseInt(totalSec / 3600, 10) % 24,
+                    minutes = parseInt(totalSec / 60, 10) % 60,
+                    seconds = totalSec % 60;
+
+                return (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
             }
-        },
+        };
+    }();
 
-        stopTime: function() {
-            clearTimeout(t);
-            this.timerIsOn=0;
-        },
-
-        readTime: function() {
-            var totalSec = parseInt(this.timer / (1000 / this.cycleTime), 10),
-                hours = parseInt(totalSec / 3600, 10) % 24,
-                minutes = parseInt(totalSec / 60, 10) % 60,
-                seconds = totalSec % 60;
-
-            return (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
-        }
-    };
-
-    pollApp.Poll = {
+    var pollApp = {
 
         // Initializes the poll
         init: function($el) {
@@ -80,7 +80,8 @@ define([
             self.setupListeners();
 
             self.setClientIP();
-            pollApp.Timer.init();
+            self.timer = timer.init();
+            console.log(self.timer);
         },
 
         getClientIP: function() {
@@ -155,7 +156,7 @@ define([
         // Returns data for the form submission
         formData: function() {
             var sortedFeatureMap = self.getSortedFeatureMap(true),
-                seconds = pollApp.Timer.readTime(),
+                seconds = self.timer.readTime(),
                 device = self.getDeviceType(),
                 ip = self.getClientIP(),
                 data = {};
