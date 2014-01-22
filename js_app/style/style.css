@@ -16,7 +16,7 @@ header h1 {
     margin: 0;
 }
 .main {
-    width: 90%;
+    width: 85%;
     margin: auto;
 }
 h1 {
@@ -137,6 +137,7 @@ ul {
     font-size: 1em;
 }
 .messages .success {
+    margin-top: 2em;
     color: #333;
 }
 .messages .fail {

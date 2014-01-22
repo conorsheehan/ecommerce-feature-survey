@@ -63,8 +63,8 @@ define([
                 2: "User Comments / Reviews",
                 3: "Free Returns",
                 4: "Checkout As Guest",
-                5: "Coupon Codes",
-                6: "Customer Support",
+                5: "Email Communications / Sale Alerts",
+                6: "Customer Relations",
                 7: "Social Discounts / Referral Programs",
             };
             self.features = _.shuffle(_.keys(self.featureMap)); // Shuffled array of feature keys
