@@ -50,7 +50,7 @@ window.pollApp = window.pollApp || {};
 
     pollApp.Poll = {
 
-        // Instantiates the poll
+        // Initializes the poll
         init: function($el) {
             self = this;
 
@@ -141,6 +141,13 @@ window.pollApp = window.pollApp || {};
             return self.$submitForm;
         },
 
+        findSubmitButton: function() {
+            if(!self.$submitButton) {
+                self.$submitButton = this.$el.find('input[type=submit]');
+            }
+            return self.$submitButton;
+        },
+
         // Returns data for the form submission
         formData: function() {
             var sortedFeatureMap = self.getSortedFeatureMap(true),
@@ -157,10 +164,13 @@ window.pollApp = window.pollApp || {};
             return _.extend(data, sortedFeatureMap);
         },
 
+        // Disable submit button and submit form to API
         formSubmit: function() {
             var url = "http://py.conorzsheehan.com/survey/survey-responses/",
                 data = self.formData();
+
             console.log(data);
+            self.findSubmitButton().prop('disable', true);
 
             $.post(url, data)
                 .done(self.formSuccess)
@@ -168,22 +178,21 @@ window.pollApp = window.pollApp || {};
                 .always(self.formAlways);
         },
 
+        // When form succeeds, show thank you message
         formSuccess: function() {
             console.log('Success');
-            self.findSubmitForm().hide();
+            self.findSubmitForm().slideUp();
             self.showMessage("success");
         },
 
+        // When form fails, show error message
         formFail: function() {
             console.log('Fail');
-            self.findSubmitForm().hide();
+            self.findSubmitButton().prop('disable', false);
             self.showMessage("fail");
         },
 
-        formAlways: function() {
-            console.log('Always');
-        },
-
+        // Make the feature list sortable
         makeSortable: function($el) {
             $el.sortable();
             $el.disableSelection();
@@ -213,6 +222,7 @@ window.pollApp = window.pollApp || {};
             });
         },
 
+        // Configure event listeners on app
         setupListeners: function() {
             self.$el.find('form').submit(function(e) {
                 e.preventDefault();
@@ -220,6 +230,7 @@ window.pollApp = window.pollApp || {};
             });
         },
 
+        // Show message (success/failure/etc)
         showMessage: function(messageClass) {
             var $messageWrapper = self.findMessageWrapper(),
                 $messageEl = $messageWrapper.find("." + messageClass);
@@ -228,7 +239,7 @@ window.pollApp = window.pollApp || {};
                 .hide()
                 .end()
                 .show();
-            $messageEl.show();
+            $messageEl.slideDown();
         }
 
     };

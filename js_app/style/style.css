@@ -92,6 +92,10 @@ ul {
 .btn {
     display: block;
     margin: auto;
+    -webkit-transition: background-color 200 ease-in;  
+    -moz-transition: background-color 200 ease-in;  
+    -o-transition: background-color 200 ease-in;  
+    transition: background-color 200 ease-in;
 }
 .btn-default {
     color: #333;
@@ -105,11 +109,16 @@ ul {
 .btn-green:hover {
     background-color: #7AB317;
 }
+.btn[disabled],
+.btn[disabled]:hover {
+    background-color: #ccc;
+    color: #fafafa;
+}
 .messages {
     display: none;
 }
 .messages div {
-    margin: 1em 0;
+    margin: 0;
     letter-spacing: 1;
     text-transform: uppercase;
     font-weight: bold;
@@ -140,4 +149,7 @@ ul {
 
     background-color: #A0C55F;
     color: white;
+}
+.messages p:first-child {
+    margin-top: 0;
 }
