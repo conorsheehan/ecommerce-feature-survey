@@ -37,8 +37,16 @@ ul {
     display: block;
     list-style: none;
 }
+.loader {
+    text-align: center;
+    margin: 1em 0;
+}
 .rankings {
-    margin: 2em 0;
+    display: none;
+    margin-top: 2em;
+}
+.rankings form {
+    margin-top: 2em;
 }
 .rankings .label {
     color: #bbb;
@@ -47,6 +55,7 @@ ul {
     font-weight: bold;
     text-align: center;
 }
+
 .features {
     max-width: 500px;
     margin: 0.5em auto;

@@ -10,32 +10,41 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+
     <header>
         <h1>E-Commerce Priorities Poll</h1>
     </header>
+
     <div class="main">
+
         <p>What do you look for when you're shopping on the web?</p>
         <p>Does a shopping site with ________ keep you coming back?</p>
         <p>Drag and drop the features below to adjust rank.</p>
+
+        <div class="loader"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+
         <div class="rankings">
             <div class="label">Most Important</div>
             <ul class="features"></ul>
             <div class="label">Least Important</div>
+
+            <form>
+                <input class="btn btn-green" type="submit">
+            </form>
         </div>
-        <form>
-            <input class="btn btn-green" type="submit">
-        </form>
-        <div class="messages" style="display:none;">
+
+        <div class="messages">
             <div class="success">
                 <p>Thank you for the feedback!</p>
                 <p>Join us on Feb 25 for a webinar on e-commerce,<br>where we will discuss the results.</p>
                 <p><a href="https://attendee.gotowebinar.com/register/5336509728149122050" target="_blank">Click here to register</a></p>
             </div>
             <div class="fail">There was a problem with your submission. Please try again.</div>
-            <div class="always">Always do this</div>
-            <div class="during">Do this until it's over</div>
         </div>
+
     </div>
+
     <footer></footer>
+
 </body>
 </html>

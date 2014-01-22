@@ -67,10 +67,7 @@ define([
                 6: "Customer Support",
                 7: "Social Discounts / Referral Programs",
             };
-            console.log('keys 1');
-            console.log('underscore', _);
             self.features = _.shuffle(_.keys(self.featureMap)); // Shuffled array of feature keys
-            console.log('keys 2');
 
             self.$el = $el;
             self.$featureListEl = self.$el.find('ul.features');
@@ -81,7 +78,7 @@ define([
 
             self.setClientIP();
             self.timer = timer.init();
-            console.log(self.timer);
+            self.showApp();
         },
 
         getClientIP: function() {
@@ -174,7 +171,6 @@ define([
             var url = "http://py.conorzsheehan.com/survey/survey-responses/",
                 data = self.formData();
 
-            console.log(data);
             self.findSubmitButton().prop('disable', true);
 
             $.post(url, data)
@@ -185,14 +181,12 @@ define([
 
         // When form succeeds, show thank you message
         formSuccess: function() {
-            console.log('Success');
             self.findSubmitForm().slideUp();
             self.showMessage("success");
         },
 
         // When form fails, show error message
         formFail: function() {
-            console.log('Fail');
             self.findSubmitButton().prop('disable', false);
             self.showMessage("fail");
         },
@@ -245,6 +239,11 @@ define([
                 .end()
                 .show();
             $messageEl.slideDown();
+        },
+
+        showApp: function() {
+            self.$el.find('.loader').hide();
+            self.$el.find('.rankings').show();
         }
 
     };
